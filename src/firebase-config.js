@@ -38,7 +38,6 @@ export const registerWithEmailAndPassword = async (name, email, password) => {
     await setDoc(doc(db, "users", name), {
       uid: user.uid,
       name,
-      authProvider: "local",
       email,
     });
   } catch (err) {
