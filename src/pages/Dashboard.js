@@ -183,13 +183,12 @@ function Dashboard() {
                   <div class="grid__row">
                     <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-blue widget-icon selected">
                       <Link
-                        to="/dashboard"
+                        to="/patient-database"
                         style={{ padding: "1px", color: "white" }}
                       >
                         {" "}
                         <img src={Stethoscope} alt="" title="" />
-                        <span class="widget-icon__badge">INFLUENZA</span>
-                        <h5>KNOWN CONDITIONS</h5>
+                        <h5>VIEW PATIENT DATABASE</h5>
                       </Link>
                     </div>
 
