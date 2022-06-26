@@ -11,7 +11,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
+import { query, getDocs, collection, where, addDoc, setDoc, doc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -35,7 +35,7 @@ export const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await addDoc(collection(db, "users"), {
+    await setDoc(doc(db, "users", name), {
       uid: user.uid,
       name,
       authProvider: "local",
