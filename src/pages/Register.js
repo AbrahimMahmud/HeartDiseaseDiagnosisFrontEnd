@@ -13,15 +13,19 @@ function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
+  const [number, setNumber] = useState("");
+  const [addr, setAddress] = useState("");
+  const [lang, setLanguage] = useState("");
+  const [gend, setGender] = useState("");
   const navigate = useNavigate();
   const register = () => {
     if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
+    registerWithEmailAndPassword(name, email, password, number, addr, lang, gend);
   };
   useEffect(() => {
     if (loading) return;
   }, [user, loading]);
-  if (user) navigate("/update-info");
+  if (user) navigate("/dashboard");
   return (
     <div id="content">
       <div class="grid grid--margin">
@@ -57,6 +61,34 @@ function Register() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
+                />
+                <input
+                  type="text"
+                  className="login__textBox"
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                  placeholder="Phone Number"
+                />
+                <input
+                  type="text"
+                  className="login__textBox"
+                  value={addr}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Work Address"
+                />
+                <input
+                  type="text"
+                  className="login__textBox"
+                  value={lang}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  placeholder="Primary Language"
+                />
+                <input
+                  type="text"
+                  className="login__textBox"
+                  value={gend}
+                  onChange={(e) => setGender(e.target.value)}
+                  placeholder="Gender"
                 />
                 <div>
                   <button className="login__btn" onClick={register}>

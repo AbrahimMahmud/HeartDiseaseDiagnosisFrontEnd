@@ -8,7 +8,6 @@ import Settings from "./pages/Settings";
 import Register from "./pages/Register";
 import { useState } from "react";
 import NavbarNoAuth from "./components/Navbar/NavbarNoAuth";
-import UpdateInfo from "./pages/UpdateInfo";
 
 function App() {
   const [isAuth, setIsAuth] = useState(true); //change state to true to see navbar items, leave blank to see noAuth bar
@@ -26,7 +25,6 @@ function App() {
             element={<Settings setIsAuth={setIsAuth} />}
           />
           <Route path="/register" element={<Register />} />
-          <Route path="/update-info" element={<UpdateInfo />} />
         </Routes>
       </Router>
     </div>
