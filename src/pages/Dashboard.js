@@ -204,16 +204,6 @@ function Dashboard() {
                         <h5>VIEW THE NOTEBOOK</h5>
                       </a>
                     </div>
-                    <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-pink widget-icon selected">
-                      <Link
-                        to="/update-info"
-                        style={{ padding: "1px", color: "white" }}
-                      >
-                        <span class="widget-icon__badge">PROFILE</span>
-                        <img src={Doctor} alt="" title="" />
-                        <h5>UPDATE YOUR PROFILE</h5>
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>
