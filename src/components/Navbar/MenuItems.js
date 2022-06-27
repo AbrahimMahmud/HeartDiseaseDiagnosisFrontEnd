@@ -10,8 +10,8 @@ export const MenuItems = [
     cName: "nav-links",
   },
   {
-    title: "Update Profile",
-    url: "update-info",
+    title: "Diagnosis Notebook",
+    url: "view-notebook",
     cName: "nav-links",
   },
   {
