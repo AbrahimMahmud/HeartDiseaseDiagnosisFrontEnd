@@ -22,8 +22,10 @@ import {
   updateDoc,
   getDoc,
 } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Dashboard() {
+  const [user, loading, error] = useAuthState(auth);
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -53,8 +55,12 @@ function Dashboard() {
   };
 
   useEffect(() => {
+    if (loading) return;
+  }, [user, loading]);
+  
+  if (user) {
     getData();
-  }, []);
+  }
 
   return (
     <div
@@ -90,8 +96,9 @@ function Dashboard() {
                       </div>
                       <div class="dashboard-intro__subtitle"></div>
                       <div class="dashboard-intro__subtitle">
-                        Here is your dashboard where you can view old patient data
-                        as well as submit new data for the model to diagnose.
+                        Here is your dashboard where you can view old patient
+                        data as well as submit new data for the model to
+                        diagnose.
                       </div>
                     </div>
                   </div>
@@ -166,7 +173,9 @@ function Dashboard() {
                         to="/add-patient-data"
                         style={{ padding: "1px", color: "white" }}
                       >
-                        <span class="widget-icon__badge">DATA FOR DIAGNOSIS</span>
+                        <span class="widget-icon__badge">
+                          DATA FOR DIAGNOSIS
+                        </span>
                         <img src={Doctor} alt="" title="" />
                         <h5>ADD NEW PATIENT DATA</h5>
                       </Link>
