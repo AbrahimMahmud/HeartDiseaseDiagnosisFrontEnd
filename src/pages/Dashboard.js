@@ -8,6 +8,7 @@ import "../styles/swiper.css";
 import Avatar from "../images/IMG_0793.jpg";
 import Results from "../images/icons/icons-64-white/flask.png";
 import Stethoscope from "../images/icons/icons-64-white/stethoscope.png";
+import Doctor from "../images/icons/icons-64-white/doctor.png";
 import { Link } from "react-router-dom";
 import { auth, db } from "../firebase-config";
 import {
@@ -89,8 +90,8 @@ function Dashboard() {
                       </div>
                       <div class="dashboard-intro__subtitle"></div>
                       <div class="dashboard-intro__subtitle">
-                        Here is your dashboard where you can see data on your
-                        latest exam as well as report and submit any new data.
+                        Here is your dashboard where you can view old patient data
+                        as well as submit new data for the model to diagnose.
                       </div>
                     </div>
                   </div>
@@ -132,74 +133,6 @@ function Dashboard() {
                   </div>
 
                   <div class="grid__row">
-                    <div class="grid__col grid__col--14 grid__col--margin grid__col--padding bg-gray10 mb0">
-                      <div class="grid__row justify-sb">
-                        <div class="grid__col grid__col--mb-12">
-                          <h3 class="grid__col-title">Risk of Cancer %</h3>
-                          <span class="grid__col-subtitle"></span>
-                          <span class="grid__col-subinfo gradient-blue gradient-text">
-                            17%
-                          </span>
-                          <span class="grid__col-subtitle">MODERATE LEVEL</span>
-                        </div>
-                        <div class="grid__col grid__col--mb-12 d-flex justify-fe"></div>
-                      </div>
-
-                      <nav
-                        class="dropdown-menu dropdown-menu--content"
-                        id="tasksdropdown"
-                      ></nav>
-                    </div>
-                    <div class="grid__col grid__col--14 grid__col--margin grid__col--padding bg-gray10 mb0">
-                      <div class="grid__row justify-sb">
-                        <div class="grid__col grid__col--mb-12">
-                          <h3 class="grid__col-title">Risk of Diabetes %</h3>
-                          <span class="grid__col-subtitle"></span>
-                          <span class="grid__col-subinfo gradient-lightblue gradient-text">
-                            57%
-                          </span>
-                          <span class="grid__col-subtitle">LOW-HIGH LEVEL</span>
-                        </div>
-                        <div class="grid__col grid__col--mb-12 d-flex justify-fe"></div>
-                      </div>
-                      <nav
-                        class="dropdown-menu dropdown-menu--content"
-                        id="newpatientsdropdown"
-                      ></nav>
-                    </div>
-                    <div class="grid__col grid__col--14 grid__col--margin grid__col--padding bg-gray10 mb0">
-                      <div class="grid__row justify-sb">
-                        <div class="grid__col grid__col--mb-12">
-                          <h3 class="grid__col-title">PNEUMONIA</h3>
-                          <span class="grid__col-subtitle"></span>
-                          <span class="grid__col-subinfo gradient-pink gradient-text">
-                            NEGATIVE
-                          </span>
-                        </div>
-                        <div class="grid__col grid__col--mb-12 d-flex justify-fe"></div>
-                      </div>
-                      <nav
-                        class="dropdown-menu dropdown-menu--content"
-                        id="alertdropdown"
-                      ></nav>
-                    </div>
-                    <div class="grid__col grid__col--14 grid__col--margin grid__col--padding bg-gray10 mb0">
-                      <div class="grid__row justify-sb">
-                        <div class="grid__col grid__col--mb-12">
-                          <h3 class="grid__col-title">Last Doctor's Visit</h3>
-                          <span class="grid__col-subtitle"></span>
-                          <span class="grid__col-subinfo">12 / 27 / 2021</span>
-                        </div>
-                        <div class="grid__col grid__col--mb-12 d-flex justify-fe"></div>
-                      </div>
-                      <nav
-                        class="dropdown-menu dropdown-menu--content"
-                        id="alertdropdown"
-                      ></nav>
-                    </div>
-                  </div>
-
-                  <div class="grid__row">
                     <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-blue widget-icon selected">
                       <Link
                         to="/patient-database"
@@ -227,6 +160,16 @@ function Dashboard() {
                         <img src={Results} alt="" title="" />
                         <h5>VIEW THE NOTEBOOK</h5>
                       </a>
+                    </div>
+                    <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-pink widget-icon selected">
+                      <Link
+                        to="/add-patient-data"
+                        style={{ padding: "1px", color: "white" }}
+                      >
+                        <span class="widget-icon__badge">DATA FOR DIAGNOSIS</span>
+                        <img src={Doctor} alt="" title="" />
+                        <h5>ADD NEW PATIENT DATA</h5>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import { useState } from "react";
 import NavbarNoAuth from "./components/Navbar/NavbarNoAuth";
 import DiagnosisNotebook from "./pages/DiagnosisNotebook";
+import AddNewPatientData from "./pages/AddNewPatientData";
 
 function App() {
   const [isAuth, setIsAuth] = useState(true); //change state to true to see navbar items, leave blank to see noAuth bar
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/view-notebook" element={<DiagnosisNotebook />} />
+          <Route path="/add-patient-data" element={<AddNewPatientData />} />
         </Routes>
       </Router>
     </div>

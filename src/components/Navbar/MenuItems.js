@@ -10,6 +10,11 @@ export const MenuItems = [
     cName: "nav-links",
   },
   {
+    title: "Add New Patient Data",
+    url: "add-patient-data",
+    cName: "nav-links",
+  },
+  {
     title: "Diagnosis Notebook",
     url: "view-notebook",
     cName: "nav-links",
