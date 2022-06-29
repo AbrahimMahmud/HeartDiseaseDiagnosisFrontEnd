@@ -25,7 +25,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);  //USE THIS TO LOAD IN USER STATE
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -57,7 +57,7 @@ function Dashboard() {
   useEffect(() => {
     if (loading) return;
   }, [user, loading]);
-  
+
   if (user) {
     getData();
   }
