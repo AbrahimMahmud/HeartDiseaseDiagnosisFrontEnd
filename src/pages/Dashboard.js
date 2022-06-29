@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/dashboard.min.css";
 import "../styles/daterangepicker.css";
 import "../styles/ion.rangeSlider.min.css";
@@ -8,10 +8,53 @@ import "../styles/swiper.css";
 import Avatar from "../images/IMG_0793.jpg";
 import Results from "../images/icons/icons-64-white/flask.png";
 import Stethoscope from "../images/icons/icons-64-white/stethoscope.png";
-import Doctor from "../images/icons/icons-64-white/doctor.png";
 import { Link } from "react-router-dom";
+import { auth, db } from "../firebase-config";
+import {
+  query,
+  getDocs,
+  collection,
+  where,
+  addDoc,
+  setDoc,
+  doc,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
 
 function Dashboard() {
+  const [address, setAddress] = useState("");
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [language, setLanguage] = useState("");
+
+  const getData = async () => {
+    var uid = auth.currentUser.uid;
+
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+
+    const address1 = docSnap.data().address;
+    const name1 = docSnap.data().name;
+    const number1 = docSnap.data().phone;
+    const gender1 = docSnap.data().gender;
+    const email1 = docSnap.data().email;
+    const language1 = docSnap.data().language;
+
+    setAddress(address1);
+    setName(name1);
+    setNumber(number1);
+    setGender(gender1);
+    setEmail(email1);
+    setLanguage(language1);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div
       style={{
@@ -42,7 +85,7 @@ function Dashboard() {
                     <div class="grid__col grid__col--margin grid__col--12">
                       <div class="dashboard-intro__subtitle"></div>
                       <div class="dashboard-intro__title">
-                        Welcome Back, <span>Abrahim</span>
+                        Welcome Back, <span>{name}</span>
                       </div>
                       <div class="dashboard-intro__subtitle"></div>
                       <div class="dashboard-intro__subtitle">
@@ -58,54 +101,30 @@ function Dashboard() {
                           <img src={Avatar} alt="" title="" />
                         </div>
                         <div class="patient-info__details">
-                          <div class="patient-info__title">Abrahim Mahmud</div>
+                          <div class="patient-info__title">{name}</div>
                           <div class="patient-info__row">
                             <div class="patient-info__col">
-                              <span>Birth Date:</span> 12 December 2005 (16
-                              y.o.)
+                              <span>Email:</span> <a href="#">{email}</a>
                             </div>
                             <div class="patient-info__col">
-                              <span>Gender:</span> Male
+                              <span>Work Address:</span> {address}
                             </div>
                             <div class="patient-info__col">
-                              <span>Address:</span> 123 Coles St, Jersey City,
-                              NJ
+                              <span>Gender:</span> {gender}
                             </div>
                           </div>
                           <div class="patient-info__row">
                             <div class="patient-info__col">
-                              <span>Email:</span>{" "}
-                              <a href="#">abrahimm1205@gmail.com</a>
+                              <span>Phone:</span> <a href="tel:123">{number}</a>
                             </div>
                             <div class="patient-info__col">
-                              <span>Phone:</span> <a href="tel:123"> </a>
-                            </div>
-                            <div class="patient-info__col">
-                              <span>Languages:</span> English
-                            </div>
-                          </div>
-                          <div class="patient-info__row">
-                            <div class="patient-info__col">
-                              <span>Blood Type:</span> B
-                            </div>
-                            <div class="patient-info__col">
-                              <span>Allergies:</span> None
-                            </div>
-                            <div class="patient-info__col">
-                              <span>Diseases:</span> Influenza
+                              <span>Languages:</span> {language}
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="grid__col grid__col--margin grid__col--15 d-flex justify-fe aligns-fs">
-                      <span
-                        class="show-more show-more--select show-more--select-gray has-dropdown"
-                        data-dropdown="moreoptions"
-                      >
-                        Edit your profile
-                      </span>
-                    </div>
+
                     <nav
                       class="dropdown-menu dropdown-menu--content"
                       id="moreoptions"
@@ -192,14 +211,19 @@ function Dashboard() {
                       </Link>
                     </div>
 
-                    <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-lightblue widget-icon selected" >
+                    <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-lightblue widget-icon selected">
                       <a
-                        href="https://github.com/AbrahimMahmud/heart-disease-prediction-v2/blob/main/heart_disease_prediction.ipynb"
+                        href="https://github.com/AbrahimMahmud/HeartDiseaseDiagnosisFrontEnd/blob/master/BACKEND/heart_disease_prediction.ipynb"
                         style={{ padding: "1px", color: "white" }}
                         target="_blank"
                       >
                         {" "}
-                        <span class="widget-icon__badge" href="https://github.com/AbrahimMahmud/heart-disease-prediction-v2/blob/main/heart_disease_prediction.ipynb">GITHUB</span>
+                        <span
+                          class="widget-icon__badge"
+                          href="https://github.com/AbrahimMahmud/HeartDiseaseDiagnosisFrontEnd/blob/master/BACKEND/heart_disease_prediction.ipynb"
+                        >
+                          GITHUB
+                        </span>
                         <img src={Results} alt="" title="" />
                         <h5>VIEW THE NOTEBOOK</h5>
                       </a>

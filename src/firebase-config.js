@@ -19,8 +19,10 @@ import {
   addDoc,
   setDoc,
   doc,
-  updateDoc
+  updateDoc,
+  getDoc,
 } from "firebase/firestore";
+import { useEffect } from "react";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -32,6 +34,13 @@ const firebaseConfig = {
   appId: "1:48045985241:web:e3ad3f6c58d209ba47ddc8",
 };
 
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
+
 export const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -40,7 +49,15 @@ export const logInWithEmailAndPassword = async (email, password) => {
     alert(err.message);
   }
 };
-export const registerWithEmailAndPassword = async (name, email, password, phone, address, language, gender) => {
+export const registerWithEmailAndPassword = async (
+  name,
+  email,
+  password,
+  phone,
+  address,
+  language,
+  gender
+) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -51,21 +68,14 @@ export const registerWithEmailAndPassword = async (name, email, password, phone,
       phone,
       address,
       language,
-      gender
+      gender,
     });
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
-}; 
+};
 
 export const logout = () => {
   signOut(auth);
 };
-
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-
-export const db = getFirestore(app);
-export const auth = getAuth(app);
-export const provider = new GoogleAuthProvider();
