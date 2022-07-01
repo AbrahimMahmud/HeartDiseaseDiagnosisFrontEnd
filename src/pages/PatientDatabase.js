@@ -51,13 +51,78 @@ function PatientDataset() {
 
   return (
     <div>
-      <h1>Results: </h1>
+      <div
+        style={{
+          height: "100%",
+        }}
+      >
+        <body
+          style={{
+            height: "100%",
+          }}
+        >
+          <div
+            class="dashboard-wrap"
+            style={{
+              height: "100%",
+            }}
+          >
+            <div class="section section--content" id="content">
+              <div class="grid grid--margin">
+                <div
+                  class="grid__row dashboard-intro"
+                  style={{
+                    textAlign: "left",
+                  }}
+                >
+                  <div class="grid__col grid__col--margin grid__col--padding bg-white">
+                    <div class="grid__row">
+                      <div class="grid__col grid__col--margin grid__col--12">
+                        <div class="dashboard-intro__subtitle"></div>
+                        <div class="dashboard-intro__title">
+                          Patient Database
+                        </div>
+                        <div class="dashboard-intro__subtitle"></div>
+                        <div class="dashboard-intro__subtitle">
+                          Here is a list of all previous heart disease
+                          prediction results.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      </div>
       {results.length > 0 ? (
         results.map((result) => (
-          <div key={results.key}>
-            <div>{result.name}</div>
-            <div>{result.result}</div>
-          </div>
+          <body
+            style={{
+              height: "100%",
+            }}
+          >
+            <div class="section section--content" id="content">
+              <div class="grid grid--margin">
+                <div
+                  style={{
+                    textAlign: "left",
+                  }}
+                >
+                  <div class="grid__col grid__col--margin grid__col--padding bg-white">
+                    <div class="grid__row">
+                      <div style={{ fontWeight: 700 }} key={results.key}>
+                        <div>Patient Name: {result.name}</div>
+
+                        <div>Prediction Result: {result.result}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </body>
         ))
       ) : (
         <h1>no results available</h1>

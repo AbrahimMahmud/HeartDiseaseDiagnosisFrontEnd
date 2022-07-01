@@ -147,7 +147,7 @@ function Dashboard() {
                       >
                         {" "}
                         <img src={Stethoscope} alt="" title="" />
-                        <h5>VIEW PATIENT DATABASE</h5>
+                        <h5>View Patient Database</h5>
                       </Link>
                     </div>
 
@@ -165,7 +165,7 @@ function Dashboard() {
                           GITHUB
                         </span>
                         <img src={Results} alt="" title="" />
-                        <h5>VIEW THE NOTEBOOK</h5>
+                        <h5>Heart Disease Prediction Notebook With EDA</h5>
                       </a>
                     </div>
                     <div class="grid__col grid__col--16 grid__col--mb-12 grid__col--margin grid__col--padding gradient-pink widget-icon selected">
@@ -177,7 +177,7 @@ function Dashboard() {
                           DATA FOR DIAGNOSIS
                         </span>
                         <img src={Doctor} alt="" title="" />
-                        <h5>ADD NEW PATIENT DATA</h5>
+                        <h5>Add New Patient Data</h5>
                       </Link>
                     </div>
                   </div>
