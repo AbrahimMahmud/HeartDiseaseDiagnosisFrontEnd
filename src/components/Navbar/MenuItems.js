@@ -15,7 +15,7 @@ export const MenuItems = [
     cName: "nav-links",
   },
   {
-    title: "Diagnosis Notebook",
+    title: "H.D. Prediction Notebook",
     url: "view-notebook",
     cName: "nav-links",
   },

@@ -25,7 +25,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);  //USE THIS TO LOAD IN USER STATE
+  const [user, loading, error] = useAuthState(auth); //USE THIS TO LOAD IN USER STATE
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -98,7 +98,7 @@ function Dashboard() {
                       <div class="dashboard-intro__subtitle">
                         Here is your dashboard where you can view old patient
                         data as well as submit new data for the model to
-                        diagnose.
+                        predict.
                       </div>
                     </div>
                   </div>
